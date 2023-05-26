@@ -16,7 +16,7 @@ QT_LIBRARIES = [
         name = "qt_%s_linux" % name,
         # When being on Windows this glob will be empty
         hdrs = glob(["%s/**" % include_folder], allow_empty = True),
-        includes = ["."],
+        includes = [".", include_folder],
         linkopts = ["-l%s" % library_name],
         # Available from Bazel 4.0.0
         # target_compatible_with = ["@platforms//os:linux"],
