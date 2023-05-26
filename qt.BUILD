@@ -5,6 +5,7 @@ QT_LIBRARIES = [
     ("network", "QtNetwork", "Qt5Network", []),
     ("widgets", "QtWidgets", "Qt5Widgets", [":qt_core", ":qt_gui"]),
     ("quick", "QtQuick", "Qt5Quick", [":qt_gui", ":qt_qml"]),
+    ("quickcontrols2", "QtQuickControls2", "Qt5QuickControls2", [":qt_gui", ":qt_qml", ":qt_quick"])
     ("qml", "QtQml", "Qt5Qml", [":qt_core", ":qt_network"]),
     ("qml_models", "QtQmlModels", "Qt5QmlModels", []),
     ("gui", "QtGui", "Qt5Gui", [":qt_core"]),
