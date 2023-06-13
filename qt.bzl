@@ -59,17 +59,9 @@ def qt_ui_library(name, ui, deps, **kwargs):
 
 def _gencpp(ctx):
     info = ctx.toolchains["@com_justbuchanan_rules_qt//tools:toolchain_type"].qtinfo
-
-    resource_files = [(f, ctx.actions.declare_file(f.path)) for f in ctx.files.files]
-    for target_file, output in resource_files:
-        ctx.actions.symlink(
-            output = output,
-            target_file = target_file,
-        )
-
     args = ["--name", ctx.attr.resource_name, "--output", ctx.outputs.cpp.path, ctx.file.qrc.path]
     ctx.actions.run(
-        inputs = [resource for _, resource in resource_files] + [ctx.file.qrc],
+        inputs = [f for f in ctx.files.files] + [ctx.file.qrc],
         outputs = [ctx.outputs.cpp],
         arguments = args,
         executable = info.rcc_path,
